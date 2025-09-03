@@ -58,6 +58,27 @@
     .hero{padding:80px 0 40px}
     .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:var(--grid-gap)}
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* equal split */
+        gap: 2rem; /* spacing between text and image */
+        align-items: center; /* vertically align */
+      }
+
+      .hero-grid .profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .avatar-img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        display:block;
+        border-radius:20px; /* nice soft corners for the image */
+      }
+
     .card{background:var(--panel); border:1px solid rgba(255,255,255,0.08); border-radius:var(--radius); box-shadow:var(--shadow)}
     .card.pad{padding:28px}
     .headline h1{font-size:clamp(28px, 4vw, 46px); margin:0 0 10px}
@@ -73,6 +94,29 @@
     .btn:hover{box-shadow:var(--ring)}
     .btn:active{transform:translateY(1px)}
     .btn.primary{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#0b1020; border-color:transparent}
+
+    /* Résumé button */
+    .btn.resume{
+      position:relative;
+      font-weight:800;
+      letter-spacing:.2px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:#0b1020;
+      border-color:transparent;
+      box-shadow: 0 8px 30px rgba(124,156,255,0.35);
+      overflow:hidden;
+    }
+    .btn.resume svg{margin-right:6px}
+    .btn.resume:before{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(90deg, rgba(255,255,255,.25) 0%, rgba(255,255,255,0) 60%);
+      transform:translateX(-120%);
+    }
+    .btn.resume:hover:before{
+      transform:translateX(120%);
+      transition:transform .7s ease;
+    }
 
     .profile{display:grid; place-items:center; padding:24px}
     .avatar{width:140px; height:140px; border-radius:36px; background:radial-gradient(circle at 30% 30%, #fff, #ddebff 35%, #a7c2ff 60%, #7c9cff);
@@ -114,6 +158,28 @@
     .tag{font-size:12px; padding:6px 10px; border-radius:999px; background:var(--panel-strong); border:1px solid rgba(255,255,255,0.12)}
     .project .bar{position:absolute; inset:auto 0 0 0; height:4px; background:linear-gradient(90deg, var(--accent), var(--accent-2))}
     .project:hover{transform:translateY(-1px)}
+
+    /* Enjoy section (new) */
+    .enjoy-head{display:flex; align-items:baseline; gap:12px; margin-bottom:10px}
+    .enjoy-sub{color:var(--muted); font-weight:600; font-size:13px}
+    .enjoy-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:var(--grid-gap);
+      margin-top:10px;
+    }
+    @media(max-width:700px){.enjoy-grid{grid-template-columns:1fr}}
+    .enjoy-card{
+      padding:16px;
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.10);
+      transition:transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .enjoy-card:hover{transform:translateY(-2px); box-shadow:var(--shadow); border-color:rgba(255,255,255,0.18)}
+    .enjoy-emoji{font-size:22px; line-height:1}
+    .enjoy-title{font-weight:700; margin-top:8px; margin-bottom:4px}
+    .enjoy-card p{margin:0; color:#d6dcf7}
 
     /* Footer */
     footer{padding:40px 0 60px; color:var(--muted); text-align:center}
@@ -175,18 +241,26 @@
             <span class="chip">Azure</span>
             <span class="chip">Prometheus</span>
             <span class="chip">Grafana</span>
+            <span class="chip">Splunk</span>
             <span class="chip">OpenTelemetry</span>
           </div>
           <div class="cta">
+            <!-- New résumé button -->
+            <a class="btn resume" href="Gihan-Chathuranga-Resume.pdf" download aria-label="Download Resume">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Download Resume
+            </a>
+
             <a class="btn primary" href="https://github.com/Gihchathur" target="_blank" rel="noopener">View GitHub →</a>
             <a class="btn" href="https://www.linkedin.com/in/gihanchathuranga/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="#projects">See Projects</a>
             <a class="btn" href="mailto:gihchathurhan@gmail.com">Email Me</a>
           </div>
         </div>
-        <aside class="card profile">
-          <img src="assets/me.png" alt="Gihan Chathuranga" class="avatar-img">
-          <div class="quick">Based in Sweden · Open to part-time roles</div>
+        <aside class="profile">
+          <img src="pic.png" alt="Gihan Chathuranga" class="avatar-img">
         </aside>
       </div>
     </section>
@@ -200,7 +274,7 @@
           observability for a Norwegian healthcare platform (DIPS). My focus is crafting clean, reliable
           systems and useful dashboards that help teams move faster.
         </p>
-        <div class="grid cols-2" style="margin-top:10px">
+        <div class="grid cols-1" style="margin-top:10px; margin-left:10px;">
           <div class="item"><div class="dot"></div>
             <h3>Master’s — Software Engineering</h3>
             <div class="meta">Mälardalen University · 2025 — ongoing</div>
@@ -211,14 +285,39 @@
           </div>
         </div>
       </article>
-      <article class="card section-card">
-        <h2>What I enjoy</h2>
-        <ul>
-          <li>Designing resilient services and clean Helm charts</li>
-          <li>Making Grafana dashboards that actually help</li>
-          <li>Keeping CI/CD pipelines fast and boring</li>
-          <li>Helping teams adopt OpenTelemetry properly</li>
-        </ul>
+
+      <!-- WHAT I ENJOY (reworked) -->
+      <article class="card section-card enjoy">
+        <div class="enjoy-head">
+          <h2>What I enjoy</h2>
+          <span class="enjoy-sub">Things I love building & improving</span>
+        </div>
+
+        <div class="enjoy-grid">
+          <div class="enjoy-card">
+            <div class="enjoy-emoji">🧭</div>
+            <div class="enjoy-title">Resilient services</div>
+            <p>Designing failure-tolerant backends with clear SLOs.</p>
+          </div>
+
+          <div class="enjoy-card">
+            <div class="enjoy-emoji">🛠️</div>
+            <div class="enjoy-title">Clean Helm charts</div>
+            <p>Templating that’s readable, overridable, and DRY.</p>
+          </div>
+
+          <div class="enjoy-card">
+            <div class="enjoy-emoji">⚡</div>
+            <div class="enjoy-title">Boring CI/CD</div>
+            <p>Fast, predictable pipelines with clear promotion paths.</p>
+          </div>
+
+          <div class="enjoy-card">
+            <div class="enjoy-emoji">🛰️</div>
+            <div class="enjoy-title">OpenTelemetry</div>
+            <p>Signals wired correctly: traces, metrics, and logs.</p>
+          </div>
+        </div>
       </article>
     </section>
 
@@ -248,7 +347,7 @@
           <h3>Software Engineer Intern — Creative Software</h3>
           <div class="meta">Aug 2020 — Jul 2021 · Colombo, Sri Lanka</div>
           <p>
-            Contributed to in‑app notification management, built internal tooling, and learned cloud-native practices
+            Contributed to in-app notification management, built internal tooling, and learned cloud-native practices
             across containers, monitoring, and automation.
           </p>
         </div>
@@ -292,7 +391,7 @@
       <article class="project">
         <div class="cap">
           <h3>Notification Center — Admin Portal</h3>
-          <p>.NET + SQL admin portal to manage in‑app notifications and workflows.</p>
+          <p>.NET + SQL admin portal to manage in-app notifications and workflows.</p>
           <div class="tags">
             <span class="tag">.NET</span><span class="tag">SQL Server</span><span class="tag">Docker</span>
           </div>
@@ -335,7 +434,7 @@
     <!-- CONTACT -->
     <section id="contact" class="card section-card" style="margin-top:10px">
       <h2>Contact</h2>
-      <p>Let’s build something reliable together. I’m open to part‑time roles in Sweden and remote collaborations.</p>
+      <p>Let’s build something reliable together. I’m open to part-time roles in Sweden and remote collaborations.</p>
       <div class="cta">
         <a class="btn primary" href="mailto:gihchathurhan@gmail.com">Email Me</a>
         <a class="btn" href="https://github.com/Gihchathur" target="_blank" rel="noopener">GitHub</a>
