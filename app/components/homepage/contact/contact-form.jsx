@@ -42,10 +42,8 @@ function ContactForm() {
         `Email: ${userInput.email}\n\n` +
         `${userInput.message}`;
 
-      // Open user's email client (works on static hosting)
       window.location.href = `mailto:gihchathurhan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      toast.success("Opening your email client…");
+      toast.success("Opening your email app…");
     } catch (error) {
       toast.error("Could not open your email app. Please email me at gihchathurhan@gmail.com");
     } finally {
