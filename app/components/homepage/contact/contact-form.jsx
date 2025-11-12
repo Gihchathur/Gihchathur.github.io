@@ -35,19 +35,19 @@ function ContactForm() {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
-        userInput
-      );
 
-      toast.success("Message sent successfully!");
-      setUserInput({
-        name: "",
-        email: "",
-        message: "",
-      });
+      const subject = `Portfolio contact from ${userInput.name}`;
+      const body =
+        `Name: ${userInput.name}\n` +
+        `Email: ${userInput.email}\n\n` +
+        `${userInput.message}`;
+
+      // Open user's email client (works on static hosting)
+      window.location.href = `mailto:gihchathurhan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      toast.success("Opening your email client…");
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error("Could not open your email app. Please email me at gihchathurhan@gmail.com");
     } finally {
       setIsLoading(false);
     };
