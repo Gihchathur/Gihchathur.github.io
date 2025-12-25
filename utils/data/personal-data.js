@@ -6,12 +6,12 @@ export const personalData = {
   leetcode: "https://www.hackerrank.com/profile/Gihchathurhan",
   email: 'gihchathurhan@gmail.com',
   phone: '+46769601480',
-  address: 'Västerås - Sweden ',
+  address: 'Stockholm - Sweden ',
   github: 'https://github.com/Gihchathur',
   facebook: 'https://www.facebook.com/gihan.chathuranga.370/',
   linkedIn: 'https://www.linkedin.com/in/gihanchathuranga/',
   twitter: 'https://x.com/gihchathur',
   stackOverflow: 'https://stackoverflow.com/users/12676748/gihan-chathuranga',
   devUsername: "Gihchathur",
-  resume: "https://drive.google.com/file/d/1E5O8JJZVfvIu4UmdzCsXJzWzk2Bj_PIY/view?usp=drive_link"
+  resume: "https://drive.google.com/file/d/1CA0ySN8mCy-2qnYzwfQp7P4__0wutlWB/view?usp=drive_link"
 }
