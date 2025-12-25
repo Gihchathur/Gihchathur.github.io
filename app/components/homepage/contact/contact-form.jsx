@@ -27,29 +27,40 @@ function ContactForm() {
     if (!userInput.email || !userInput.message || !userInput.name) {
       setError({ ...error, required: true });
       return;
-    } else if (error.email) {
-      return;
-    } else {
-      setError({ ...error, required: false });
-    };
+    }
+
+    setIsLoading(true);
 
     try {
-      setIsLoading(true);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "70b3da7b-94ce-4a91-b3e7-405ad6e5549f",
+          name: userInput.name,
+          email: userInput.email,
+          message: userInput.message,
+        }),
+      });
 
-      const subject = `Portfolio contact from ${userInput.name}`;
-      const body =
-        `Name: ${userInput.name}\n` +
-        `Email: ${userInput.email}\n\n` +
-        `${userInput.message}`;
+      const json = await res.json();
 
-      window.location.href = `mailto:gihchathurhan@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      toast.success("Opening your email app…");
-    } catch (error) {
-      toast.error("Could not open your email app. Please email me at gihchathurhan@gmail.com");
+      if (json.success) {
+        toast.success("Message sent successfully!");
+        setUserInput({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Failed to send message.");
+      }
+    } catch (err) {
+      toast.error("Something went wrong. Try again later.");
     } finally {
       setIsLoading(false);
-    };
+    }
   };
+
 
   return (
     <div>
