@@ -23,22 +23,23 @@ export const projectsData = [
   },
   {
     id: 3,
-    name: "Health Buddy",
+    name: "KubeMotion – Kubernetes Architecture Visualizer",
     description:
-      "A mobile application designed for disease prediction and health monitoring. The app collects user input, predicts potential diseases using trained machine learning models, and provides recommendations through a chatbot interface.",
-    tools: ["Flutter", "WebSocket", "Node.js", "Firebase", "Python", "TensorFlow"],
-    role: "Full Stack Developer",
-    code: "",
+      "A developer-focused tool that transforms Kubernetes YAML and Helm configurations into interactive architecture visualizations, helping developers and DevOps engineers understand workloads, services, relationships, and application traffic flow.",
+    tools: ["Kubernetes", "Helm", "YAML", "TypeScript", "React"],
+    role: "Creator / Developer",
+    code: "https://github.com/Gihchathur/kubemotion",
     demo: "",
   },
+
   {
     id: 4,
-    name: "E-Sathkara – Relief Management System",
+    name: "FileForge – VS Code Project Structure Tool",
     description:
-      "A web-based platform built to coordinate relief management efforts during emergencies. It enables efficient resource allocation, volunteer coordination, and real-time data visualization for disaster response teams.",
-    tools: ["HTML5", "CSS", "JavaScript", "Firebase"],
-    role: "Frontend Developer",
-    code: "",
+      "A VS Code extension that allows developers to export, copy, and recreate project file and folder structures directly within VS Code, simplifying project structure management and improving developer productivity.",
+    tools: ["TypeScript", "Node.js", "VS Code Extension API", "VS Code"],
+    role: "Creator / Developer",
+    code: "https://github.com/Gihchathur/fileforge",
     demo: "",
   }
 ];
