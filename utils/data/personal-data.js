@@ -13,5 +13,5 @@ export const personalData = {
   twitter: 'https://x.com/gihchathur',
   stackOverflow: 'https://stackoverflow.com/users/12676748/gihan-chathuranga',
   devUsername: "Gihchathur",
-  resume: "https://drive.google.com/file/d/1CA0ySN8mCy-2qnYzwfQp7P4__0wutlWB/view?usp=drive_link"
+  resume: "https://drive.google.com/file/d/1k64zDxVfmQrlhq9Zli0uoA3S-oBqfDIo/view?usp=drive_link"
 }
