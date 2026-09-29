@@ -96,6 +96,7 @@ import opentelemetry from '../app/assets/svg/skills/opentelemetry.svg'
 
 
 
+
 export const skillsImage = (skill) => {
   const skillID = skill.toLowerCase();
   switch (skillID) {

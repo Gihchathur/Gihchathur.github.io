@@ -6,6 +6,8 @@ export const skillsData = [
   'Python',
   'Java',
   'JavaScript',
+  'React',
+  'Typescript',
 
   // Cloud & DevOps
   'Docker',
